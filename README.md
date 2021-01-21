@@ -1,0 +1,1 @@
+Working on Joel Grus' excellent Data Science from Scratch book, but doing it in Swift so I learn a bit more about both.
