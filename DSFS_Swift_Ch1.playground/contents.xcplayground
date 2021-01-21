@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<playground target-platform="ios" requires-full-environment="false" version="6.0">
+<playground requires-full-environment="false" version="6.0" target-platform="ios">
     <pages>
-        <page name="DSFS_Swift_Ch1"/>
-        <page name="Page Two"/>
+        <page name="Finding Key Connectors"/>
+        <page name="Data Scientists You May Know"/>
     </pages>
 </playground>
