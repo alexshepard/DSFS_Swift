@@ -4,14 +4,26 @@
 
 //: find the total & average number of connections
 
-func numberOfFriends(user: User) -> Int {
+var friendships = [Int: [Int]]()
+for user in DataSciencester.users {
+    guard let userId = user["id"] as? Int else { continue }
+    friendships[userId] = [Int]()
+}
+for (userId, friendId) in DataSciencester.friendship_pairs {
+    friendships[userId]?.append(friendId)
+    friendships[friendId]?.append(userId)
+}
+
+func numberOfFriends(userId: Int) -> Int {
     // how many friends does user have?
-    guard let friendIds = DataSciencester.friendships[user.id] else { return 0 }
+    guard let friendIds = friendships[userId] else { return 0 }
     return friendIds.count
 }
 
-var totalConnections = DataSciencester.users.reduce(0) {
-    $0 + numberOfFriends(user: $1)
+var totalConnections = 0
+for user in DataSciencester.users {
+    guard let userId = user["id"] as? Int else { continue }
+    totalConnections += numberOfFriends(userId: userId)
 }
 print(totalConnections)
 
@@ -20,15 +32,14 @@ print(avgConnections)
 
 //: find the most & least popular
 
-print(DataSciencester.users.sorted { 
-    numberOfFriends(user: $0) > numberOfFriends(user: $1)
-})
-
-// or, following the book, construct and sort array
+// following the book, construct and sort array
 // of tuples (user_id, num_friends)
-let numFriendsById = DataSciencester.users.map { 
-    ($0.id, numberOfFriends(user: $0)) 
+var numFriendsById = [(Int, Int)]()
+for user in DataSciencester.users {
+    guard let userId = user["id"] as? Int else { continue }
+    numFriendsById.append( (userId, numberOfFriends(userId: userId)) )
 }
+
 let popular = numFriendsById.sorted { (a, b) -> Bool in 
     return a.1 > b.1
 }
