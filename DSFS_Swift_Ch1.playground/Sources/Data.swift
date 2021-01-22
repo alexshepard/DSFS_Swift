@@ -86,4 +86,12 @@ public struct DataSciencester {
         return friendships
     }()
     
+    public static let salaries_and_tenures = [
+        (83_000, 8.7), (88_000, 8.1),
+        (48_000, 0.7), (76_000, 6),
+        (69_000, 6.5), (76_000, 7.5),
+        (60_000, 2.5), (83_000, 10),
+        (48_000, 1.9), (63_000, 4.2)
+    ]
+    
 }
