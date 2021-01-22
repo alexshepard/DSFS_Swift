@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<playground requires-full-environment="false" version="6.0" target-platform="ios">
+<playground target-platform="ios" version="6.0" requires-full-environment="false">
     <pages>
         <page name="Finding Key Connectors"/>
         <page name="Data Scientists You May Know"/>
+        <page name="Salaries and Experience"/>
+        <page name="Paid Accounts"/>
+        <page name="Topics of Interest"/>
     </pages>
 </playground>
