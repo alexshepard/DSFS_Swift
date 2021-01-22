@@ -72,4 +72,18 @@ public struct DataSciencester {
         
         return interestsDict
     }()
+    
+    public static var friendships: [Int: [Int]] = {
+        var friendships = [Int: [Int]]()
+        for user in DataSciencester.users {
+            guard let userId = user["id"] as? Int else { continue }
+            friendships[userId] = [Int]()
+        }
+        for (userId, friendId) in DataSciencester.friendship_pairs {
+            friendships[userId]?.append(friendId)
+            friendships[friendId]?.append(userId)
+        }
+        return friendships
+    }()
+    
 }

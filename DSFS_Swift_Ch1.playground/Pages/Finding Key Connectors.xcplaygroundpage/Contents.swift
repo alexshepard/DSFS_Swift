@@ -4,19 +4,9 @@
 
 //: find the total & average number of connections
 
-var friendships = [Int: [Int]]()
-for user in DataSciencester.users {
-    guard let userId = user["id"] as? Int else { continue }
-    friendships[userId] = [Int]()
-}
-for (userId, friendId) in DataSciencester.friendship_pairs {
-    friendships[userId]?.append(friendId)
-    friendships[friendId]?.append(userId)
-}
-
 func numberOfFriends(userId: Int) -> Int {
     // how many friends does user have?
-    guard let friendIds = friendships[userId] else { return 0 }
+    guard let friendIds = DataSciencester.friendships[userId] else { return 0 }
     return friendIds.count
 }
 
