@@ -2,6 +2,7 @@
 <playground version='6.0' target-platform='macos' buildActiveScheme='true' importAppTypes='true'>
     <pages>
         <page name='Simple Line Chart'/>
-        <page name='Untitled Page 2'/>
+        <page name='Simple Bar Chart'/>
+        <page name='Bar Charts for Histograms'/>
     </pages>
 </playground>
