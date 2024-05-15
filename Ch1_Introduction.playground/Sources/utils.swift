@@ -64,3 +64,14 @@ public let salaries_and_tenures = [
     (60000, 2.5), (83000, 10),
     (48000, 1.9), (63000, 4.2)
 ]
+
+public extension Array where Element: Hashable {
+    // this will come in handy a few times
+    // this makes a counter out of a dict
+    func counted() -> [Element: Int] {
+        var counts = [Element: Int]()
+        self.forEach { counts[$0, default: 0] += 1 }
+        return counts
+    }
+}
+
