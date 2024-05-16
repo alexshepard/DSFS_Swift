@@ -47,6 +47,7 @@ struct BarChart: View {
                 AxisMarks(values: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
             }
             .chartYAxisLabel("# of Students")
+            .chartXAxisLabel("Decile")
             .frame(width: 500, height: 300)
         }
         .padding(.top, 10)
