@@ -6,5 +6,6 @@
         <page name='Bar Charts for Histograms'/>
         <page name='Misleading Axes'/>
         <page name='Visualizing Trends'/>
+        <page name='Scatterplots'/>
     </pages>
 </playground>
