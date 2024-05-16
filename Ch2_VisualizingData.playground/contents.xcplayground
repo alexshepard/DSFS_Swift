@@ -4,5 +4,6 @@
         <page name='Simple Line Chart'/>
         <page name='Simple Bar Chart'/>
         <page name='Bar Charts for Histograms'/>
+        <page name='Misleading Axes'/>
     </pages>
 </playground>
