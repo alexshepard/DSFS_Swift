@@ -8,7 +8,7 @@ extension FloatingPoint {
     
     func uniformPdfIn(range: Range<Self>) -> Self {
         if 0 <= range.lowerBound && self < range.upperBound {
-            return 1 / range.upperBound - range.lowerBound
+            return 1 / (range.upperBound - range.lowerBound)
         } else {
             return 0
         }
