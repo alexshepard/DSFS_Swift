@@ -8,7 +8,7 @@ import Charts
 import PlaygroundSupport
 
 extension Real {
-    func normalPdf(mu: Self = Self(0), sigma: Self = Self(1)) -> Self {
+    func normalPdf(mu: Self = 0, sigma: Self = 1) -> Self {
         let exponent = -((self - mu) * (self - mu)) / (2 * sigma * sigma)
         let numer = Self.exp(exponent)
 
