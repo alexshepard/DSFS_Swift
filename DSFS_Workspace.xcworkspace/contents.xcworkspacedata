@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Ch6_Probability_Numerics.playground">
+   </FileRef>
+   <FileRef
+      location = "group:HostApp/HostApp.xcodeproj">
+   </FileRef>
+</Workspace>
