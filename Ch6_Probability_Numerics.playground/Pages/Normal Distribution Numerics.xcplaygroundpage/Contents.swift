@@ -9,11 +9,11 @@ import PlaygroundSupport
 
 extension Real {
     func normalPdf(mu: Self = 0, sigma: Self = 1) -> Self {
-        let exponent = -((self - mu) * (self - mu)) / (2 * sigma * sigma)
-        let numer = Self.exp(exponent)
-
-        let sqrtTwoPiSigma = (Self.pi * 2).squareRoot() * sigma
-        return numer / sqrtTwoPiSigma
+        return Self.exp(-((self - mu) * (self - mu)) / (2 * sigma * sigma)) / ((Self.pi * 2).squareRoot() * sigma)
+    }
+    
+    func normalCdf(mu: Self = 0, sigma: Self = 1) -> Self {
+        return (1 + Self.erf((self - mu) / Self(2).squareRoot() / sigma)) / 2
     }
 }
 
