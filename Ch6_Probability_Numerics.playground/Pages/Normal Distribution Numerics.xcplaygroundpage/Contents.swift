@@ -80,9 +80,7 @@ struct ChartView: View {
     }
 }
 
-
 let view = ChartView()
 PlaygroundPage.current.setLiveView(view)
-
 
 //: [Next](@next)
