@@ -19,13 +19,15 @@ extension Real {
 
 let x: Float = 0.3
 print(x.normalPdf())
+print(x.normalCdf())
 
 /// # let's chart some variants of the normal distribution
 struct Point: Identifiable {
     var id: UUID = UUID()
 
     var x: Double
-    var y: Double
+    var pdf: Double
+    var cdf: Double
     var category: String
 }
 
@@ -41,20 +43,30 @@ let points = xs.flatMap { x -> [Point] in
     return categories.map { category in
         Point(
             x: Double(x),
-            y: Double(x).normalPdf(mu: category.mu, sigma: category.sigma),
+            pdf: Double(x).normalPdf(mu: category.mu, sigma: category.sigma),
+            cdf: Double(x).normalCdf(mu: category.mu, sigma: category.sigma),
             category: category.label
         )
     }
 }
 
 struct ChartView: View {
+    @State private var fn = "cdf"
+    private var fns = ["pdf", "cdf"]
+    
     var body: some View {
         VStack {
             Text("Normal Distribution")
+            Picker("Function", selection: $fn) {
+                ForEach(fns, id: \.self) {
+                    Text($0)
+                }
+            }
+            .pickerStyle(.inline)
             Chart(points) {
                 LineMark(
                     x: .value("x", $0.x),
-                    y: .value("y", $0.y)
+                    y: .value("y", fn == "cdf" ? $0.cdf : $0.pdf)
                 )
                 .foregroundStyle(by: .value("Category", $0.category))
                 // smoothing between points
