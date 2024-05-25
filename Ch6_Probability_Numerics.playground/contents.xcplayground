@@ -2,7 +2,6 @@
 <playground version='6.0' target-platform='macos' buildActiveScheme='true' importAppTypes='true'>
     <pages>
         <page name='Normal Distribution Numerics'/>
-        <page name='Untitled Page'/>
-        <page name='Normal Distribution'/>
+        <page name='Central Limit Theorem'/>
     </pages>
 </playground>
