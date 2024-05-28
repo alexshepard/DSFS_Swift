@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Ch7_Hypothesis_Inference.playground">
+   </FileRef>
+   <FileRef
       location = "group:Ch6_Probability_Numerics.playground">
    </FileRef>
    <FileRef
