@@ -36,9 +36,6 @@ func normalApproximationToBinomial(n: Float, p: Float) -> (Float, Float) {
     return (mu, sigma)
 }
 
-let (m, s) = normalApproximationToBinomial(n: 1_000, p: 0.5)
-print(m, s)
-
 func normalProbabilityBelow(_ hi: Float, mu: Float = 0, sigma: Float = 1) -> Float {
     /// The probability that an N(mu, sigma) is less than x
     normalCdf(x: hi, mu: mu, sigma: sigma)
@@ -68,12 +65,33 @@ func normalLowerBound(p: Float, mu: Float = 0, sigma: Float = 1) -> Float {
     return inverseNormalCdf(x: 1 - p, mu: mu, sigma: sigma)
 }
 
-func twoSidedBounds(p: Float, mu: Float = 0, sigma: Float = 1) -> (Float, Float) {
+func normalTwoSidedBounds(p: Float, mu: Float = 0, sigma: Float = 1) -> (Float, Float) {
     /// Returns the symmetric (around the mean) bounds that contains the given probability.
     let tailP = (1 - p) / 2
     
-    let upperBound = normalLowerBound(p: tailP, mu, sigma)
-    let lowerBound = normalUpperBound(p: tailP, mu, sigma)
+    let upperBound = normalLowerBound(p: tailP, mu: mu, sigma: sigma)
+    let lowerBound = normalUpperBound(p: tailP, mu: mu, sigma: sigma)
     
     return (lowerBound, upperBound)
 }
+
+/// significance
+let (mu0, sigma0) = normalApproximationToBinomial(n: 1_000, p: 0.5)
+print("mean is \(mu0) and sigma is \(sigma0) with 1k binomials with p 0.5")
+let (lowerBound, upperBound) = normalTwoSidedBounds(p: 0.95, mu: mu0, sigma: sigma0)
+print("bounds: (\(lowerBound), \(upperBound))")
+
+/// test poewr
+let (lo, hi) = normalTwoSidedBounds(p: 0.95, mu: mu0, sigma: sigma0)
+let (mu1, sigma1) = normalApproximationToBinomial(n: 1_000, p: 0.55)
+let type2Probability = normalProbabilityBetween(lo, and: hi, mu: mu1, sigma: sigma1)
+let power = 1 - type2Probability
+print("power is \(power)")
+
+/// one sided test
+let hi2 = normalUpperBound(p: 0.95, mu: mu0, sigma: sigma0)
+print("hi for one sided test is \(hi2)")
+let type2Probability2 = normalProbabilityBelow(hi2, mu: mu1, sigma: sigma1)
+let oneSidedPower = 1 - type2Probability2
+print("one sided test power is \(oneSidedPower)")
+
