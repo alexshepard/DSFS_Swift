@@ -3,5 +3,7 @@
     <pages>
         <page name='p-values'/>
         <page name='Statistical Hypothesis Testing'/>
+        <page name='Confidence Intervals'/>
+        <page name='p-Hacking'/>
     </pages>
 </playground>
