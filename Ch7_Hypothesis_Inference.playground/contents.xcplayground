@@ -5,5 +5,7 @@
         <page name='Statistical Hypothesis Testing'/>
         <page name='Confidence Intervals'/>
         <page name='p-Hacking'/>
+        <page name='A B Testing'/>
+        <page name='Bayesian Inference'/>
     </pages>
 </playground>
