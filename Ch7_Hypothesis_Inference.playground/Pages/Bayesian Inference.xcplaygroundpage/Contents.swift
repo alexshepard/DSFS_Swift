@@ -15,10 +15,6 @@ func betaPDF(x: Double, alpha: Double, beta: Double) -> Double {
         return 0
     }
     
-    let numT1 = pow(x, (alpha - 1))
-    let numT2 = pow((1.0 - x), (beta - 1))
-    let num = numT1 * numT2
-    let denom = B(alpha: alpha, beta: beta)
     return (pow(x, (alpha - 1)) * pow((1 - x), (beta - 1))) / B(alpha: alpha, beta: beta)
 }
 
