@@ -98,8 +98,36 @@ for i in 0..<10 {
 print("checks out 👍")
 
 
+/// when f is a function of many variables, it has a partial derivative for each variable
+/// these tracks how the function f changes as a result of each variable changing respectively
 
+func partialDifferenceQuotient<T: FloatingPoint>(f: (Vector<T>) -> T, v: Vector<T>, i: Int, h: T) -> T {
+    /// returns the i-th partial difference quotient of f at v
 
+    // add h to just the ith element of v
+    let w = Vector(items: v.enumerated().map { $0 == i ? $1 + h : $1 })
+    return (f(w) - f(v)) / h
+}
+
+func sumOfSquares<T>(_ X: Vector<T>) -> T {
+    return X.sumOfSquares()
+}
+
+let v = Vector(items: [1.0, 2.0, 3.0])
+for i in 0..<v.count {
+    let h: Double = 0.000001
+    let diff = partialDifferenceQuotient(f: sumOfSquares, v: v, i: i, h: h)
+//    let dd = derivativeOfSumOfSquareFn(x: Double(i))
+    print(i, v[i], diff)
+}
+
+func estimateGradient<T: FloatingPoint>(f: (Vector<T>) -> T, v: Vector<T>, h: T) -> Vector<T> {
+    Vector(items: (0..<v.count).map {
+        partialDifferenceQuotient(f: f, v: v, i: $0, h: h)
+    })
+}
+
+print(estimateGradient(f: sumOfSquares, v: v, h: 0.0001))
 
 
 //: [Next](@next)
