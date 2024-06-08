@@ -3,5 +3,6 @@
     <pages>
         <page name='The Idea Behind Gradient Descent'/>
         <page name='Estimating the Gradient'/>
+        <page name='Using the Gradient'/>
     </pages>
 </playground>
